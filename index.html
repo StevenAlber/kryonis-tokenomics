@@ -6,6 +6,7 @@
     <title>KRYONIS: Инфографика для Инвесторов</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -46,24 +47,35 @@
         .flow-box {
             border: 2px solid #415A77;
             background-color: #0D1B2A;
+            transition: transform 0.3s ease;
+        }
+        .flow-box:hover {
+             transform: scale(1.02);
+        }
+        /* Custom style for the clickable patent box */
+        #patent-toggle-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        #patent-toggle-card:hover {
+            background-color: #2a3854;
+            box-shadow: 0 6px 20px rgba(65, 90, 119, 0.4);
+        }
+        #patent-deep-dive {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.6s ease-in-out, max-height 0.6s ease-in-out;
+        }
+        #patent-deep-dive.active {
+            opacity: 1;
+            max-height: 500px; /* Large enough to show content */
+            padding-top: 1.5rem;
         }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- 
-    Palette Name: Energetic & Playful (#0D1B2A, #1B263B, #415A77, #778DA9, #E0E1DD)
-    Narrative Plan: Hook (Crisis) -> Vision (Shift) -> Solution (Technology) -> Business Model (Revenue & Projections) -> Mechanism (Tokenomics & Structure) -> Call to Action.
-    Visualization Choices:
-    - Crisis: Big Number (HTML), Donut Chart (Chart.js, Goal: Inform) - Confirmed NO SVG.
-    - Paradigm Shift: Flow Chart (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
-    - Bio-Digital Organism: Layered Diagram (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
-    - Revenue Projections: Line Chart (Chart.js, Goal: Change) - Confirmed NO SVG.
-    - Revenue Tiers: Bar Chart (Chart.js, Goal: Compare) - Confirmed NO SVG.
-    - Use of Funds: Donut Chart (Chart.js, Goal: Compare) - Confirmed NO SVG.
-    - Corporate Structure: Flow Chart (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
-    - Final Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All charts are Canvas via Chart.js and all diagrams are structured HTML/CSS with Tailwind.
-    -->
 
     <div class="container mx-auto p-4 md:p-8">
 
@@ -105,6 +117,7 @@
             <section id="paradigm-shift" class="card rounded-xl shadow-2xl p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-center mb-8">2. Парадигмальный Сдвиг: к Эволюционной Экономике</h2>
                 <p class="max-w-3xl mx-auto text-center text-lg mb-10">Существующие модели управления отходами исчерпали себя. KRYONIS предлагает третий путь — экономику, где отходы становятся сырьем для постоянной биологической эволюции и создания новых ценностей.</p>
+                <!-- Static Flow Diagram -->
                 <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-4">
                     <div class="text-center p-4 flow-box rounded-lg w-full md:w-1/4">
                         <h3 class="text-xl font-bold mb-2">Линейная</h3>
@@ -121,23 +134,42 @@
                         <p class="text-gray-300">Отходы = Cубстрат для Эволюции. Система становится умнее и ценнее со временем.</p>
                     </div>
                 </div>
+                <!-- End Static Flow Diagram -->
             </section>
 
             <section id="solution" class="card rounded-xl shadow-2xl p-6 md:p-8">
                 <h2 class="text-3xl font-bold text-center mb-8">3. Решение: Национальный Био-Цифровой Организм</h2>
                  <p class="max-w-3xl mx-auto text-center text-lg mb-10">В основе KRYONIS лежит уникальный российский патент и концепция самообучающейся инфраструктуры, которая функционирует как живой организм, состоящий из трех взаимосвязанных систем.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div>
-                         <h3 class="text-2xl font-bold text-center mb-6">Технологическое Ядро: Патент RU2803340C1</h3>
-                         <div class="bg-gray-800/30 p-6 rounded-lg text-center">
+                         <!-- PATENT DEEP DIVE TOGGLE (The only interactive element retained) -->
+                         <div id="patent-toggle-card" class="bg-gray-800/30 p-6 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold text-center mb-2">Технологическое Ядро: Патент RU2803340C1</h3>
                             <p class="text-lg">Превращение подземных геологических формаций в контролируемые, безопасные биореакторы.</p>
                             <ul class="mt-4 text-left space-y-2 inline-block">
                                 <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Генерация ценного биогаза</li>
                                 <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Постоянное захоронение углерода (CDR)</li>
                                 <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Исключительная безопасность на глубине 500-1500м</li>
                             </ul>
+                             <button id="patent-details-button" class="mt-6 text-sm font-semibold text-blue-400 hover:text-blue-300">Показать Технические Детали &darr;</button>
                          </div>
+
+                         <!-- DEEP DIVE CONTENT -->
+                         <div id="patent-deep-dive" class="bg-gray-700/50 rounded-b-lg border-t-2 border-blue-500 mt-[-1px] z-50 relative p-6">
+                            <h4 class="text-xl font-bold text-white mb-3">Технические Параметры Биореактора</h4>
+                            <p class="text-sm text-gray-300 mb-4">На основании патента, наша технология использует геолого-технологический комплекс для обеспечения оптимальных условий биоконверсии:</p>
+                            <ul class="text-sm space-y-2">
+                                <li class="flex justify-between items-center border-b border-gray-600 pb-1"><span class="text-gray-400">Глубина Заложения:</span> <span class="font-mono text-white">500 – 1500 м</span></li>
+                                <li class="flex justify-between items-center border-b border-gray-600 pb-1"><span class="text-gray-400">Рабочее Давление:</span> <span class="font-mono text-white">5 – 15 МПа</span></li>
+                                <li class="flex justify-between items-center border-b border-gray-600 pb-1"><span class="text-gray-400">Температурный Режим:</span> <span class="font-mono text-white">40 – 60 °C</span></li>
+                                <li class="flex justify-between items-center border-b border-gray-600 pb-1"><span class="text-gray-400">Время Биоконверсии:</span> <span class="font-mono text-white">Около 60-90 дней</span></li>
+                            </ul>
+                            <p class="text-xs text-gray-500 mt-4">Контроль за этими параметрами осуществляется системой RSMI.</p>
+                         </div>
+                         <!-- END DEEP DIVE CONTENT -->
                     </div>
+                    
+                    <!-- BIO-DIGITAL ORGANISM STACK (Static and clear) -->
                     <div class="flex flex-col items-center justify-center p-4 space-y-2">
                         <div class="w-full text-center p-6 rounded-t-xl bg-blue-900/50 border-2 border-blue-500 z-30">
                             <h4 class="text-xl font-bold">3. СОЗНАНИЕ (PATES)</h4>
@@ -210,6 +242,7 @@
                         <div class="chart-container h-64 md:h-80">
                              <canvas id="useOfFundsChart"></canvas>
                         </div>
+                        <p class="text-center text-gray-400 mt-4">Распределение средств раунда A для масштабирования проекта.</p>
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold text-center mb-4">Архитектура Двух Юридических Лиц</h3>
@@ -248,6 +281,10 @@
         white: 'rgb(224, 225, 221)'
     };
 
+    if (typeof ChartDataLabels !== 'undefined') {
+        Chart.register(ChartDataLabels);
+    }
+    
     const tooltipTitleCallback = function(tooltipItems) {
         const item = tooltipItems[0];
         let label = item.chart.data.labels[item.dataIndex];
@@ -257,33 +294,42 @@
             return label;
         }
     };
-
-    const processLabels = (labels) => {
-        return labels.map(label => {
-            if (label.length <= 16) {
-                return label;
-            }
-            const words = label.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > 16) {
-                    lines.push(currentLine.trim());
-                    currentLine = word;
-                } else {
-                    currentLine = (currentLine + ' ' + word).trim();
-                }
-            }
-            if (currentLine) {
-                lines.push(currentLine.trim());
-            }
-            return lines;
-        });
-    };
-
+    
     Chart.defaults.color = CHART_COLORS.white;
     Chart.defaults.borderColor = CHART_COLORS.lightGrey;
 
+
+    // --- PATENT DEEP DIVE LOGIC (The only interactive element retained) ---
+    const patentButton = document.getElementById('patent-details-button');
+    const patentToggleCard = document.getElementById('patent-toggle-card');
+    const patentDeepDive = document.getElementById('patent-deep-dive');
+
+    function togglePatentDeepDive() {
+        const isActive = patentDeepDive.classList.contains('active');
+        if (isActive) {
+            patentDeepDive.classList.remove('active');
+            patentButton.innerHTML = 'Показать Технические Детали &darr;';
+        } else {
+            patentDeepDive.classList.add('active');
+            patentButton.innerHTML = 'Скрыть Технические Детали &uarr;';
+        }
+    }
+
+    // Attach listeners to both button and card area
+    if (patentButton) {
+        patentButton.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            togglePatentDeepDive();
+        });
+    }
+    if (patentToggleCard) {
+        patentToggleCard.addEventListener('click', togglePatentDeepDive);
+    }
+
+
+    // --- CHART INITIALIZATION ---
+    
+    // Chart 1: Waste Crisis Donut
     const wasteCrisisCtx = document.getElementById('wasteCrisisChart').getContext('2d');
     new Chart(wasteCrisisCtx, {
         type: 'doughnut',
@@ -313,6 +359,7 @@
         }
     });
 
+    // Chart 2: Revenue Projection Line
     const revenueProjectionCtx = document.getElementById('revenueProjectionChart').getContext('2d');
     new Chart(revenueProjectionCtx, {
         type: 'line',
@@ -353,28 +400,66 @@
         }
     });
 
+    // Chart 3: Use of Funds Horizontal Bar
     const useOfFundsCtx = document.getElementById('useOfFundsChart').getContext('2d');
     new Chart(useOfFundsCtx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
-            labels: processLabels(['Пилотные проекты и валидация', 'Разработка RSMI & PATES', 'Международное лицензирование', 'Резерв']),
+            labels: [
+                'Пилотные проекты и валидация',
+                'Разработка RSMI и PATES',
+                'Международное лицензирование',
+                'Резерв'
+            ],
             datasets: [{
                 data: [45, 25, 20, 10],
                 backgroundColor: [CHART_COLORS.blue, CHART_COLORS.teal, CHART_COLORS.purple, CHART_COLORS.grey],
                 borderColor: '#1B263B',
-                hoverOffset: 4
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            indexAxis: 'y',
             plugins: {
                 legend: {
-                    position: 'bottom',
+                    display: false
                 },
                 tooltip: {
                     callbacks: {
                         title: tooltipTitleCallback
+                    }
+                },
+                datalabels: {
+                    align: 'end',
+                    anchor: 'end',
+                    formatter: (value) => value + '%',
+                    color: CHART_COLORS.white,
+                    font: {
+                        weight: 'bold',
+                        size: 14
+                    },
+                    offset: 5
+                }
+            },
+            scales: {
+                x: {
+                    max: 100,
+                    beginAtZero: true,
+                    display: false,
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                         font: {
+                            size: 14,
+                            weight: '600'
+                        }
                     }
                 }
             }
