@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRYONIS: Инфографика для Инвесторов</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1B2A;
+            color: #E0E1DD;
+        }
+        .card {
+            background-color: #1B263B;
+            border: 1px solid #415A77;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .stat-number {
+            font-weight: 900;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px rgba(119, 141, 169, 0.7);
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #778DA9;
+            line-height: 1;
+        }
+        .flow-box {
+            border: 2px solid #415A77;
+            background-color: #0D1B2A;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 
+    Palette Name: Energetic & Playful (#0D1B2A, #1B263B, #415A77, #778DA9, #E0E1DD)
+    Narrative Plan: Hook (Crisis) -> Vision (Shift) -> Solution (Technology) -> Business Model (Revenue & Projections) -> Mechanism (Tokenomics & Structure) -> Call to Action.
+    Visualization Choices:
+    - Crisis: Big Number (HTML), Donut Chart (Chart.js, Goal: Inform) - Confirmed NO SVG.
+    - Paradigm Shift: Flow Chart (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
+    - Bio-Digital Organism: Layered Diagram (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
+    - Revenue Projections: Line Chart (Chart.js, Goal: Change) - Confirmed NO SVG.
+    - Revenue Tiers: Bar Chart (Chart.js, Goal: Compare) - Confirmed NO SVG.
+    - Use of Funds: Donut Chart (Chart.js, Goal: Compare) - Confirmed NO SVG.
+    - Corporate Structure: Flow Chart (HTML/CSS, Goal: Organize) - Confirmed NO SVG.
+    - Final Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All charts are Canvas via Chart.js and all diagrams are structured HTML/CSS with Tailwind.
+    -->
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-2">KRYONIS</h1>
+            <p class="text-xl md:text-2xl text-gray-300">От Отходов к Мудрости: Суверенная Био-Интеллектуальная Инфраструктура</p>
+        </header>
+
+        <main class="space-y-12 md:space-y-16">
+
+            <section id="crisis" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">1. Глобальный Кризис — это Возможность на $10+ Триллионов</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg mb-6">Человечество сталкивается с беспрецедентным кризисом отходов, который угрожает стабильности цивилизации. Но в каждом кризисе скрыта возможность. KRYONIS превращает эту угрозу в платформу для создания вечной ценности.</p>
+                        <div class="space-y-4">
+                            <div class="bg-gray-800/30 p-4 rounded-lg">
+                                <p class="text-sm text-gray-400">Годовой объем ТБО к 2050 году</p>
+                                <p class="text-5xl stat-number">3.4 млрд</p>
+                                <p class="text-lg text-gray-300">тонн</p>
+                            </div>
+                            <div class="bg-gray-800/30 p-4 rounded-lg">
+                                <p class="text-sm text-gray-400">Накоплено жидких отходов в РФ</p>
+                                <p class="text-5xl stat-number">100+ млн</p>
+                                <p class="text-lg text-gray-300">кубометров</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Судьба Мировых Отходов</h3>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="wasteCrisisChart"></canvas>
+                        </div>
+                        <p class="text-center text-gray-400 mt-4">70% мировых отходов отправляется на свалки, генерируя огромные объемы метана и загрязняя окружающую среду.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="paradigm-shift" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">2. Парадигмальный Сдвиг: к Эволюционной Экономике</h2>
+                <p class="max-w-3xl mx-auto text-center text-lg mb-10">Существующие модели управления отходами исчерпали себя. KRYONIS предлагает третий путь — экономику, где отходы становятся сырьем для постоянной биологической эволюции и создания новых ценностей.</p>
+                <div class="flex flex-col md:flex-row justify-around items-center space-y-8 md:space-y-0 md:space-x-4">
+                    <div class="text-center p-4 flow-box rounded-lg w-full md:w-1/4">
+                        <h3 class="text-xl font-bold mb-2">Линейная</h3>
+                        <p class="text-gray-400">Принять → Использовать → Выбросить. Путь к энтропии и истощению.</p>
+                    </div>
+                    <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="text-center p-4 flow-box rounded-lg w-full md:w-1/4">
+                        <h3 class="text-xl font-bold mb-2">Круговая</h3>
+                        <p class="text-gray-400">Переработка. Замедляет энтропию, но ограничена термодинамикой.</p>
+                    </div>
+                    <div class="flow-arrow transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="text-center p-4 flow-box rounded-lg w-full md:w-1/4 border-blue-400 shadow-lg shadow-blue-500/20">
+                        <h3 class="text-xl font-bold text-white mb-2">KRYONIS (Эволюционная)</h3>
+                        <p class="text-gray-300">Отходы = Cубстрат для Эволюции. Система становится умнее и ценнее со временем.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="solution" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">3. Решение: Национальный Био-Цифровой Организм</h2>
+                 <p class="max-w-3xl mx-auto text-center text-lg mb-10">В основе KRYONIS лежит уникальный российский патент и концепция самообучающейся инфраструктуры, которая функционирует как живой организм, состоящий из трех взаимосвязанных систем.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                         <h3 class="text-2xl font-bold text-center mb-6">Технологическое Ядро: Патент RU2803340C1</h3>
+                         <div class="bg-gray-800/30 p-6 rounded-lg text-center">
+                            <p class="text-lg">Превращение подземных геологических формаций в контролируемые, безопасные биореакторы.</p>
+                            <ul class="mt-4 text-left space-y-2 inline-block">
+                                <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Генерация ценного биогаза</li>
+                                <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Постоянное захоронение углерода (CDR)</li>
+                                <li class="flex items-center"><span class="text-blue-400 mr-2">✓</span> Исключительная безопасность на глубине 500-1500м</li>
+                            </ul>
+                         </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-4 space-y-2">
+                        <div class="w-full text-center p-6 rounded-t-xl bg-blue-900/50 border-2 border-blue-500 z-30">
+                            <h4 class="text-xl font-bold">3. СОЗНАНИЕ (PATES)</h4>
+                            <p class="text-sm text-gray-300">AI-управляемая эволюция всей сети для достижения стратегических целей.</p>
+                        </div>
+                        <div class="w-11/12 text-center p-6 bg-blue-800/50 border-x-2 border-blue-600 z-20">
+                            <h4 class="text-xl font-bold">2. ИММУНИТЕТ (RSMI)</h4>
+                             <p class="text-sm text-gray-300">Мониторинг в реальном времени и быстрое реагирование на угрозы.</p>
+                        </div>
+                        <div class="w-10/12 text-center p-6 rounded-b-xl bg-blue-700/50 border-2 border-blue-700 z-10">
+                            <h4 class="text-xl font-bold">1. ТЕЛО (Body)</h4>
+                             <p class="text-sm text-gray-300">Сеть физических биореакторов на основе патента.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="business-model" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">4. Бизнес-Модель: Стабильность + Экспоненциальный Рост</h2>
+                 <p class="max-w-3xl mx-auto text-center text-lg mb-10">Наша многоуровневая архитектура доходов обеспечивает стабильный денежный поток от коммунальных услуг и открывает доступ к экспоненциальному росту на венчурных рынках био-интеллекта и углеродных кредитов.</p>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                    <div class="lg:col-span-3">
+                        <h3 class="text-xl font-semibold text-center mb-4">Прогноз Годовой Выручки (Base Case)</h3>
+                        <div class="chart-container h-80">
+                            <canvas id="revenueProjectionChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col justify-center">
+                        <h3 class="text-xl font-semibold text-center mb-4">Структура Доходов</h3>
+                        <div class="space-y-4">
+                           <div class="w-full bg-gray-800/30 rounded-lg p-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold">Уровень 1: Обработка Отходов</span>
+                                    <span class="text-white font-bold">50%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-blue-500 h-2.5 rounded-full" style="width: 50%"></div>
+                                </div>
+                           </div>
+                           <div class="w-full bg-gray-800/30 rounded-lg p-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold">Уровень 2: Энергия и Химикаты</span>
+                                    <span class="text-white font-bold">35%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-teal-500 h-2.5 rounded-full" style="width: 35%"></div>
+                                </div>
+                           </div>
+                           <div class="w-full bg-gray-800/30 rounded-lg p-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-bold">Уровень 3: Био-Интеллект (IP) / CDR</span>
+                                    <span class="text-white font-bold">15%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-purple-500 h-2.5 rounded-full" style="width: 15%"></div>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="mechanism" class="card rounded-xl shadow-2xl p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">5. Механизм: Токеномика и Геополитический Щит</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-xl font-semibold text-center mb-4">IP-NFT: Ликвидность для Интеллектуальной Собственности</h3>
+                        <p class="text-center mb-6">Мы превращаем неликвидные активы (патенты) в торгуемые IP-NFT, создавая прозрачный рынок для инноваций и распределяя роялти среди держателей токенов.</p>
+                        <h3 class="text-xl font-semibold text-center mb-4 mt-8">Распределение Капитала ($50М Раунд)</h3>
+                        <div class="chart-container h-64 md:h-80">
+                             <canvas id="useOfFundsChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-center mb-4">Архитектура Двух Юридических Лиц</h3>
+                        <p class="text-center mb-6">Наша структура обеспечивает доступ к российской науке мирового уровня и одновременно защищает международных инвесторов от геополитических рисков.</p>
+                         <div class="space-y-4">
+                            <div class="flow-box p-6 rounded-lg text-center">
+                                <h4 class="font-bold text-lg text-white">KRYONIS SOVEREIGN SYSTEMS (Гонконг)</h4>
+                                <p class="text-gray-300">Глобальный холдинг, управление IP и токенами, работа с инвесторами.</p>
+                            </div>
+                            <div class="text-center text-2xl font-bold text-gray-500 my-2">&darr; &uarr;</div>
+                            <div class="flow-box p-6 rounded-lg text-center">
+                                <h4 class="font-bold text-lg text-white">ООО "КРИОНИС" (Москва)</h4>
+                                <p class="text-gray-300">Операционная деятельность, доступ к НИЦ "Курчатовский Институт".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cta" class="text-center">
+                 <h2 class="text-4xl font-bold text-white mb-4">Присоединяйтесь к Эволюции</h2>
+                 <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Мы не просто решаем проблему отходов. Мы строим будущее, которое само себя улучшает. Вопрос не в том, наступит ли это будущее, а в том, будете ли Вы его создавать.</p>
+                 <a href="mailto:invest@kryonis.io" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300">Стать Инвестором</a>
+            </section>
+
+        </main>
+    </div>
+
+<script>
+    const CHART_COLORS = {
+        blue: 'rgb(65, 90, 119)',
+        teal: 'rgb(34, 139, 139)',
+        purple: 'rgb(128, 0, 128)',
+        grey: 'rgb(119, 141, 169)',
+        lightGrey: 'rgba(224, 225, 221, 0.5)',
+        white: 'rgb(224, 225, 221)'
+    };
+
+    const tooltipTitleCallback = function(tooltipItems) {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        if (Array.isArray(label)) {
+            return label.join(' ');
+        } else {
+            return label;
+        }
+    };
+
+    const processLabels = (labels) => {
+        return labels.map(label => {
+            if (label.length <= 16) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        });
+    };
+
+    Chart.defaults.color = CHART_COLORS.white;
+    Chart.defaults.borderColor = CHART_COLORS.lightGrey;
+
+    const wasteCrisisCtx = document.getElementById('wasteCrisisChart').getContext('2d');
+    new Chart(wasteCrisisCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Свалки', 'Сжигание', 'Переработка и др.'],
+            datasets: [{
+                label: 'Распределение Отходов',
+                data: [70, 15, 15],
+                backgroundColor: [CHART_COLORS.blue, CHART_COLORS.grey, CHART_COLORS.teal],
+                borderColor: '#1B263B',
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        }
+    });
+
+    const revenueProjectionCtx = document.getElementById('revenueProjectionChart').getContext('2d');
+    new Chart(revenueProjectionCtx, {
+        type: 'line',
+        data: {
+            labels: ['2025-27', '2028', '2030', '2032', '2035'],
+            datasets: [{
+                label: 'Выручка (млрд $)',
+                data: [0.05, 0.2, 0.8, 1.5, 2.0],
+                fill: true,
+                backgroundColor: 'rgba(65, 90, 119, 0.5)',
+                borderColor: CHART_COLORS.blue,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value + ' млрд';
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        }
+    });
+
+    const useOfFundsCtx = document.getElementById('useOfFundsChart').getContext('2d');
+    new Chart(useOfFundsCtx, {
+        type: 'doughnut',
+        data: {
+            labels: processLabels(['Пилотные проекты и валидация', 'Разработка RSMI & PATES', 'Международное лицензирование', 'Резерв']),
+            datasets: [{
+                data: [45, 25, 20, 10],
+                backgroundColor: [CHART_COLORS.blue, CHART_COLORS.teal, CHART_COLORS.purple, CHART_COLORS.grey],
+                borderColor: '#1B263B',
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
