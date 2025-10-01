@@ -11,13 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Estonian: Taustavärvid on muudetud pehmemaks ja sinine on vähem domineeriv. */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0D1B2A;
+            background-color: #0D1B2A; /* Sügav taust */
             color: #E0E1DD;
         }
         .card {
-            background-color: #1B263B;
+            background-color: #1a2a40; /* Pehmem sinakashall kaardi taust */
             border: 1px solid #415A77;
         }
         .chart-container {
@@ -72,6 +73,15 @@
             opacity: 1;
             max-height: 500px; /* Large enough to show content */
             padding-top: 1.5rem;
+        }
+        
+        /* Estonian: Stiil CTA kontakttekstile */
+        .contact-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E0E1DD; 
+            text-decoration: none;
+            cursor: default; /* Eemaldab lingi kursori, kuna see pole klõpsatav link */
         }
     </style>
 </head>
@@ -262,10 +272,15 @@
                 </div>
             </section>
 
+            <!-- FINAL CTA SECTION: Plain Text Contact -->
             <section id="cta" class="text-center">
                  <h2 class="text-4xl font-bold text-white mb-4">Присоединяйтесь к Эволюции</h2>
-                 <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">Мы не просто решаем проблему отходов. Мы строим будущее, которое само себя улучшает. Вопрос не в том, наступит ли это будущее, а в том, будете ли Вы его создавать.</p>
-                 <a href="mailto:invest@kryonis.io" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition duration-300">Стать Инвестором</a>
+                 <p class="text-xl text-gray-300 max-w-4xl mx-auto mb-8">Мы не просто решаем проблему отходов. Мы строим будущее, которое само себя улучшает. Свяжитесь с нами, чтобы узнать больше о возможностях инвестирования.</p>
+                 
+                 <!-- PLAIN TEXT CONTACT, NOT A LINK -->
+                 <p class="contact-text">
+                    Свяжитесь с нами: <span class="text-white bg-gray-800/50 px-2 py-1 rounded-md select-text">hq@kryonis.global</span>
+                 </p>
             </section>
 
         </main>
@@ -325,8 +340,7 @@
     if (patentToggleCard) {
         patentToggleCard.addEventListener('click', togglePatentDeepDive);
     }
-
-
+    
     // --- CHART INITIALIZATION ---
     
     // Chart 1: Waste Crisis Donut
